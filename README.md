@@ -7,7 +7,8 @@ Rein statisch: kein Build, keine Abhängigkeiten. Push auf `main` = Deployment.
 
 ```
 zyntrix-co/
-├── index.html              Startseite (gebündelter Claude-Design-Export)
+├── index.html              Startseite (Nils-Landingpage, eine HTML-Datei)
+├── landing2.html           Weiterleitung auf / (alte Anzeigen-Links)
 ├── danke.html              Danke-Seite nach Formularversand
 ├── leistungen.html         ┐
 ├── team.html               ├ Legacy-Seiten („Zyntrix v3“-Design)
@@ -20,6 +21,7 @@ zyntrix-co/
 │
 ├── assets/
 │   ├── icons/              Favicons in allen Größen
+│   ├── landing2/           Fonts, Bilder, Logos der Startseite
 │   ├── img/                Logo, Nils-Avatar
 │   │   └── kunden/         Kundenlogos (aktuell nicht eingebunden)
 │   └── legacy/             style.css + script.js der Legacy-Seiten

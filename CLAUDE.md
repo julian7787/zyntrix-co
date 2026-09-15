@@ -12,40 +12,41 @@ Lokale Vorschau (Root-relative Pfade wie `/favicon.ico` brauchen einen Server):
 python3 -m http.server 8000
 ```
 
-## `index.html` ist ein gebündeltes Export-Artefakt
+## Corporate Identity – verbindlich
 
-`index.html` (~2 MB) ist **kein** normales HTML, sondern ein selbstentpackendes Bundle (Claude-Design-/`x-dc`-Export):
+**Die Startseite `index.html` ist die Corporate Identity von Zyntrix.** Jede neue oder überarbeitete Seite, jedes Dokument (PDF, DOCX, PPTX, E-Mail-Vorlage, Grafik …) und jede sonstige Ausgabe übernimmt exakt ihre Elemente, Farben und Schriften. Das gilt immer, auch wenn es in der Anfrage nicht eigens erwähnt wird.
 
-- `<script type="__bundler/manifest">` – JSON mit allen Assets (Bilder, Fonts, React-UMD) als Base64, adressiert per UUID.
-- `<script type="__bundler/template">` – die eigentliche Seite als **ein einziger JSON-String** (eine Zeile). Asset-Referenzen darin sind UUIDs (`src="072c0b37-…"`).
-- Ein Loader-Script entpackt beim `DOMContentLoaded` das Template und ersetzt `document.documentElement`. Deshalb stehen Meta-Pixel und Favicon-Links zusätzlich im äußeren `<head>`, und nach dem Swap werden Favicons per JS neu gesetzt (`?v=3`-Cache-Buster).
+- **Nur bestehende CSS-Klassen der Startseite verwenden.** Keine neuen Klassen, keine eigenen Komponenten, keine Inline-Styles als Ersatz. Markup und Klassen aus `index.html` übernehmen (z. B. `wrap`, `section`, `section-top`, `eyebrow`, `button`, `text-link`, `card`, `step-card`, `value-card`, `grid2`, `grid3`, `faq-list`, `check-card`, `field`, `fields`, `form-button`, `footer`, `site-header`, `brand`). Das CSS dafür 1:1 aus dem `<style>` von `index.html` kopieren. Fehlt ein Element: nicht erfinden, sondern beim User nachfragen.
+- **Farben – ausschließlich diese** (`:root` in `index.html`):
+  - `--ink` `#20434F` (Primär, Text, dunkle Flächen) · `--lime` `#D2E245` (Akzent, Buttons)
+  - `--muted` `#556E77` (Fließtext sekundär) · `--line` `#E2E7E8` (Linien, Rahmen) · `--paper`/`--white` `#FFFFFF`
+  - Flächen: `#F2F4F4` (Panels, Tags) · `#F9FBEE` (Hover) · `#2A5361` (Fläche auf Dunkel)
+  - Nur im jeweiligen Kontext: `#C0474B` Fehler · `#B0791A` Hinweis · `#1F7A5A` Status · `#D9FDD3` WhatsApp-Bubble
+- **Schriften:** Space Grotesk (`assets/landing2/space-grotesk.woff2`) für Überschriften, Buttons, Marke; Inter (`assets/landing2/inter.woff2`) für Text. Keine Google-Fonts-Einbindung, keine weiteren Schriften. Radius `--radius` 18px.
+- **Bildsprache/Marke:** Nils-Avatar `assets/landing2/nils.webp`, Kundenlogos aus `assets/landing2/`, Tonalität wie auf der Startseite (Kunden werden gesiezt).
+- Abweichende Seiten sind Altlasten, keine Vorlage: `danke.html` (wird noch auf die CI umgestellt), Legacy-Seiten, `archiv/`.
 
-Seiteninhalt und Logik liegen im Template: Markup in `<x-dc>…</x-dc>`, Logik in `<script type="text/x-dc">` als `class Component extends DCLogic` (React-artiger State, `data-props` für Editor-Props wie `showTeam`, `chatKanal`). Sektionen per Anker: `#leistungen`, `#branchen`, `#vorlagen`, `#warum`, `#modelle`, `#datenschutz`, `#ablauf`, `#faq`, `#team`, `#anfrage`, `#potenzialcheck` …
+## `index.html` – Startseite (ehem. „Landingpage 2“)
 
-**Template bearbeiten:** Kleine Änderungen direkt mit exakt escaptem String (`\"`, `\n`, `</` statt `</`). Für größere Änderungen dekodieren, bearbeiten, re-enkodieren – dieser Roundtrip ist byte-identisch:
+Normales, handgeschriebenes HTML (~70 KB, eine Datei): CSS im `<style>`, Logik in einem Inline-`<script>` am Ende (Vanilla JS, `$()` = `getElementById`). Viele Regeln stehen minifiziert in einer Zeile – Änderungen per exaktem String-Replace. Assets (Fonts, Nils-Avatar, Kundenlogos, OG-Bild) unter `assets/landing2/`, relativ referenziert. Sonstiges: `docs/landing2-umsetzung.md`.
 
-```python
-import json
-lines = open('index.html').read().split('\n')
-i = next(n for n, l in enumerate(lines) if l.startswith('"<!DOCTYPE html>'))
-tpl = json.loads(lines[i])
-# ... tpl bearbeiten ...
-lines[i] = json.dumps(tpl, ensure_ascii=False).replace('</', '<\\u002F')
-open('index.html', 'w').write('\n'.join(lines))
-```
-
-Neue Bilder/Fonts müssten ins Manifest (Base64 + UUID); einfacher ist oft ein root-relativer Pfad auf eine Datei im Repo.
+- Branchen-Varianten per URL: `?b=handwerk` (Standard), `gastro`, `immo`, `hausverwaltung`, `kanzlei` (`BRANCHES` im Script).
+- Anker: `#inhalt`, `#so-funktionierts`, `#beispiele`, `#rechner`, `#datenschutz`, `#referenzen`, `#faq`, `#potenzialcheck`.
+- Potenzialcheck: 4 Klick-Schritte (`#quiz`), dann Kontaktformular (`#form-panel`), Bestätigung (`#thank-you`). Alle drei liegen im selben Grid-Feld der `.check-card` → die Kartenhöhe ist über alle Schritte gleich; Fehlertexte haben reservierten Platz. Layoutänderungen am Formular deshalb auch in den Quiz-Schritten (Mobile!) prüfen.
+- `landing2.html` ist nur noch eine Weiterleitung auf `/` (Query/Hash bleiben erhalten) für alte Anzeigen-Links.
+- Vorherige gebündelte Startseite (Claude-Design-/`x-dc`-Export): `archiv/index_bundle_20260915.html`.
 
 ## Kontaktformular-Flow (übergreifend)
 
-Im `Component` des Templates (`submit()`):
+Im Submit-Handler von `#lead-form` (`index.html`, Script-Ende):
 
-1. `notifyTelegram()` – fire-and-forget `POST` (JSON) an `TELEGRAM_ENDPOINT` (Cloudflare Worker). Fehler dort dürfen den Formularerfolg nie beeinflussen; leerer Endpoint = deaktiviert.
-2. `POST` an Web3Forms (`WEB3FORMS_ENDPOINT`, `access_key` als Hidden-Field) → E-Mail.
-3. Bei Erfolg: `handOffLead()` legt `{eventId, ts}` unter `sessionStorage['zyntrix:lead']` ab, dann Redirect auf `danke.html`.
-4. `danke.html` liest/löscht den Token und feuert das Meta-Pixel-`Lead`-Event. Fallback: ist der Token nach 3 s noch da, feuert `index.html` selbst – mit derselben `eventID` zur Deduplizierung. Schlüssel/Logik auf beiden Seiten synchron halten.
+1. Validierung, Honeypot `botcheck`, Telefon-Normalisierung; Check-Antworten, Rechnerwerte, `datenschutzvariante`, `anzeigen_branche`, `event_id` werden angehängt.
+2. `POST` an Web3Forms (`access_key` als Hidden-Field) → E-Mail.
+3. Erst bei Erfolg: fire-and-forget `POST` (JSON, ohne `access_key`) an `TELEGRAM_ENDPOINT` (Cloudflare Worker, `keepalive`). Fehler dort dürfen den Formularerfolg nie beeinflussen; leerer Endpoint = deaktiviert.
+4. `handOffLead()` legt `{eventId, ts}` unter `sessionStorage['zyntrix:lead']` ab, zeigt `#thank-you` als Rückfall und leitet nach 250 ms auf `danke.html` weiter.
+5. `danke.html` liest/löscht den Token und feuert das Meta-Pixel-`Lead`-Event. Fallback: ist der Token nach 3 s noch da, feuert `index.html` selbst – mit derselben `eventID` zur Deduplizierung. Schlüssel/Logik auf beiden Seiten synchron halten.
 
-Lokal testen: Web3Forms verschickt auch von `localhost` echte E-Mails, und das Pixel-`Lead`-Event feuert ebenfalls (verfälscht Meta-Tracking). Der Worker lehnt `localhost` ab (403 `origin_not_allowed`, nicht in `ALLOWED_ORIGINS`), das Formular funktioniert trotzdem.
+Lokal testen: Web3Forms verschickt auch von `localhost` echte E-Mails, und das Pixel-`Lead`-Event feuert ebenfalls (verfälscht Meta-Tracking) – `fetch`/`fbq` im Browser vorher überschreiben. Der Worker lehnt `localhost` ab (403 `origin_not_allowed`, nicht in `ALLOWED_ORIGINS`), das Formular funktioniert trotzdem.
 
 Telefonfeld: Vorwahl-Dropdown (`vorwahl`) wird in `telefon` zusammengeführt und vor dem Senden entfernt (iOS-AutoFill liefert oft nationale Schreibweise).
 
@@ -63,11 +64,11 @@ Test-`curl` und Fehlercodes: `telegram-worker/README.md`.
 
 ## Weitere Dateien
 
-- `danke.html` – eigenständige Seite im aktuellen Design (Inter/Space Grotesk, `#20434F`/`#D2E245`), `noindex`, verlinkt auf Anker in `index.html`.
+- `danke.html` – eigenständige Seite, `noindex`, **noch nicht auf CI umgestellt** (eigene Klassen, Google Fonts; wird aktualisiert – dann nur Klassen/Farben aus `index.html`), verlinkt auf Anker in `index.html`. Texte/Navigation stammen noch aus der alten Startseite (Vorlagen, Team …); Links sind auf die neuen Anker umgebogen.
 - `leistungen.html`, `team.html`, `use-cases.html` + `assets/legacy/style.css` + `assets/legacy/script.js` – **Legacy „Zyntrix v3“-Design**. Sie verlinken auf Anker (`#contact`, `#pricing`, `#process`), die im aktuellen `index.html` nicht mehr existieren; das Formular in `script.js` ist nur ein Fake-Submit.
-- `archiv/index_backup_20260810_173150.html` – alte unbündelte Version, nicht live verlinkt.
-- `assets/icons/` – Favicon-PNGs (referenziert in allen Seiten, im `index.html`-Template, im Favicon-Reset-JS und in `site.webmanifest`). `favicon.ico`, `apple-touch-icon.png`, `site.webmanifest`, `CNAME` bleiben bewusst im Root.
-- `assets/img/` – `logo.jpg` (Legacy-Seiten), `nils-avatar.png` (`danke.html`); `assets/img/kunden/` – Kundenlogos, derzeit nirgends eingebunden (im `index.html` sind Bilder als Base64 im Manifest).
+- `archiv/` – alte Startseiten (`index_bundle_20260915.html` = bisheriges Bundle, `index_backup_20260810_173150.html` = unbündelt), nicht live verlinkt, aber öffentlich erreichbar.
+- `assets/icons/` – Favicon-PNGs (referenziert in allen Seiten und in `site.webmanifest`). `favicon.ico`, `apple-touch-icon.png`, `site.webmanifest`, `CNAME` bleiben bewusst im Root.
+- `assets/img/` – `logo.jpg` (Legacy-Seiten), `nils-avatar.png` (`danke.html`); `assets/img/kunden/` – Kundenlogos, derzeit nirgends eingebunden (`index.html` nutzt `assets/landing2/`).
 - `docs/` – Dokumente/Anleitungen (z. B. Cloudflare-Worker-PDF). Achtung: alles im Repo ist öffentlich unter `zyntrix.co/…` erreichbar.
 - HTML-Seiten bleiben im Root, damit ihre öffentlichen URLs stabil bleiben.
 - Meta Pixel (ID `1392514952248366`) ist in jeder Seite im `<head>` eingebunden – bei neuen Seiten übernehmen.
