@@ -24,7 +24,7 @@ python3 -m http.server 8000
   - Nur im jeweiligen Kontext: `#C0474B` Fehler · `#B0791A` Hinweis · `#1F7A5A` Status · `#D9FDD3` WhatsApp-Bubble
 - **Schriften:** Space Grotesk (`assets/landing2/space-grotesk.woff2`) für Überschriften, Buttons, Marke; Inter (`assets/landing2/inter.woff2`) für Text. Keine Google-Fonts-Einbindung, keine weiteren Schriften. Radius `--radius` 18px.
 - **Bildsprache/Marke:** Nils-Avatar `assets/landing2/nils.webp`, Kundenlogos aus `assets/landing2/`, Tonalität wie auf der Startseite (Kunden werden gesiezt).
-- Abweichende Seiten sind Altlasten, keine Vorlage: `danke.html` (wird noch auf die CI umgestellt), Legacy-Seiten, `archiv/`.
+- Abweichende Seiten sind Altlasten, keine Vorlage: Legacy-Seiten, `archiv/`.
 
 ## `index.html` – Startseite (ehem. „Landingpage 2“)
 
@@ -64,11 +64,11 @@ Test-`curl` und Fehlercodes: `telegram-worker/README.md`.
 
 ## Weitere Dateien
 
-- `danke.html` – eigenständige Seite, `noindex`, **noch nicht auf CI umgestellt** (eigene Klassen, Google Fonts; wird aktualisiert – dann nur Klassen/Farben aus `index.html`), verlinkt auf Anker in `index.html`. Texte/Navigation stammen noch aus der alten Startseite (Vorlagen, Team …); Links sind auf die neuen Anker umgebogen.
+- `danke.html` – Danke-Seite nach dem Formular, `noindex`, im CI der Startseite: `<style>` ist eine 1:1-Kopie aus `index.html` (bei CSS-Änderungen an der Startseite mitziehen), nur deren Klassen; Datenschutz-Umschalter und -Dialog per kleinem Inline-Script. Links auf `/` bzw. `/#anker`.
 - `leistungen.html`, `team.html`, `use-cases.html` + `assets/legacy/style.css` + `assets/legacy/script.js` – **Legacy „Zyntrix v3“-Design**. Sie verlinken auf Anker (`#contact`, `#pricing`, `#process`), die im aktuellen `index.html` nicht mehr existieren; das Formular in `script.js` ist nur ein Fake-Submit.
 - `archiv/` – alte Startseiten (`index_bundle_20260915.html` = bisheriges Bundle, `index_backup_20260810_173150.html` = unbündelt), nicht live verlinkt, aber öffentlich erreichbar.
 - `assets/icons/` – Favicon-PNGs (referenziert in allen Seiten und in `site.webmanifest`). `favicon.ico`, `apple-touch-icon.png`, `site.webmanifest`, `CNAME` bleiben bewusst im Root.
-- `assets/img/` – `logo.jpg` (Legacy-Seiten), `nils-avatar.png` (`danke.html`); `assets/img/kunden/` – Kundenlogos, derzeit nirgends eingebunden (`index.html` nutzt `assets/landing2/`).
+- `assets/img/` – `logo.jpg` (Legacy-Seiten), `nils-avatar.png` (derzeit nirgends eingebunden); `assets/img/kunden/` – Kundenlogos, derzeit nirgends eingebunden (`index.html` nutzt `assets/landing2/`).
 - `docs/` – Dokumente/Anleitungen (z. B. Cloudflare-Worker-PDF). Achtung: alles im Repo ist öffentlich unter `zyntrix.co/…` erreichbar.
 - HTML-Seiten bleiben im Root, damit ihre öffentlichen URLs stabil bleiben.
 - Meta Pixel (ID `1392514952248366`) ist in jeder Seite im `<head>` eingebunden – bei neuen Seiten übernehmen.
