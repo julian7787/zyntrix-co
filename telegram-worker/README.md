@@ -1,5 +1,7 @@
 # Telegram-Lead-Relay
 
+> Anleitung als PDF: [docs/Cloudflare-Worker-Einrichtung.pdf](../docs/Cloudflare-Worker-Einrichtung.pdf)
+
 Postet jede Anfrage aus dem Kontaktformular von zyntrix.co zusätzlich zur
 E-Mail (Web3Forms) in eine Telegram-Gruppe.
 

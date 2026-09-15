@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Cloudflare / Wrangler
+telegram-worker/.wrangler/
+telegram-worker/.dev.vars
+node_modules/
