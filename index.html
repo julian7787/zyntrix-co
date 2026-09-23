@@ -65,16 +65,67 @@
         <div class="hero-actions"><a class="button" href="#potenzialcheck">Ihre drei größten Zeitfresser nennen <span class="arrow" aria-hidden="true">↗&#xFE0E;</span></a><span class="small muted">Kurzer Check · 4 Klicks · kostenlos</span></div>
         <div class="hero-checks"><span>Für Sie eingerichtet</span><span>Ihre eigene Box</span><span>Persönlich aus Wien</span></div>
       </div>
-      <div class="hero-demo" role="region" aria-roledescription="Karussell" aria-label="Anwendungsbeispiele mit Nils"><div class="hero-visual" role="group" aria-label="Illustration der KI-Box und eines beispielhaften Chats">
-        <div class="hero-sticker" id="hero-sticker">Feierabend statt Papierkram.</div>
-        <div class="phone"><div class="phone-top"><span aria-hidden="true">‹</span><img src="assets/landing2/nils.webp" width="30" height="30" alt=""><div><strong>Nils</strong><small id="chat-channel">Ihr KI-Mitarbeiter · WhatsApp</small></div></div><div class="chat"><div class="bubble out"><span id="demo-request">Bad-Sanierung, 12 m², Dusche ersetzen, Fliesen neu. Familie Berger, Klosterneuburg.</span><time>19:02 ✓✓</time></div><div class="bubble reply"><div class="file"><span class="file-icon" id="demo-file-type">PDF</span><div><b id="demo-file">Angebot_Berger.pdf</b><br><small id="demo-file-detail">Ihre Preise · Ihr Layout</small></div></div><span id="demo-response">Ihr Kostenvoranschlag ist fertig. Soll ich ihn zur Freigabe vorlegen?</span><time>19:02</time></div><div class="bubble out approval"><span id="demo-approval">Passt. Ich schaue kurz drüber.</span><time>19:03 ✓✓</time></div><div class="demo-note">Illustratives Beispiel</div></div></div>
-        <div class="box-device" aria-label="Schematische Darstellung der Nils-Box"><b>nils.</b><span class="slot"></span><i></i></div>
+      <div class="hero-demo" role="region" aria-roledescription="Karussell" aria-label="Anwendungsbeispiele mit Nils">
+        <div class="hero-visual" data-phase="complete" data-format="tasks">
+          <div class="demo-header">
+            <img src="assets/landing2/nils.webp" width="44" height="44" alt="">
+            <div><strong id="demo-heading">Nils übernimmt.</strong><span id="chat-channel">Ihr KI-Mitarbeiter · WhatsApp</span></div>
+            <span class="demo-online"><i aria-hidden="true"></i>24/7</span>
+          </div>
+          <div class="demo-formats" role="group" aria-label="Darstellung auswählen" hidden>
+            <button type="button" data-demo-format="tasks" aria-pressed="true">Aufgaben</button>
+            <button type="button" data-demo-format="chat" aria-pressed="false">Chat</button>
+            <button type="button" data-demo-format="calendar" aria-pressed="false">Kalender</button>
+            <button type="button" data-demo-format="briefing" aria-pressed="false">Überblick</button>
+          </div>
+          <div class="demo-stage">
+          <div class="demo-workspace is-active" data-demo-view="tasks">
+            <div class="demo-message"><span class="demo-overline">Ihre Nachricht</span><p id="demo-request">Nils, bitte die Anfrage von Familie Berger erfassen, das Angebot vorbereiten und einen Rückruf einplanen.</p><span class="demo-sent" aria-hidden="true">19:02 <span>✓✓</span></span></div>
+            <div class="demo-tasks">
+              <div class="demo-task-heading"><strong id="demo-work-label">Alles vorbereitet.</strong><span id="demo-progress-count">3 / 3</span></div>
+              <div class="demo-progress" role="progressbar" aria-label="Bearbeitete Aufgaben im Beispiel" aria-valuemin="0" aria-valuemax="3" aria-valuenow="3"><span id="demo-progress-fill"></span></div>
+              <ol id="demo-task-list">
+                <li data-state="done"><span class="demo-task-icon" aria-hidden="true">✓</span><div><strong>Kundenanfrage erfassen</strong><small>Familie Berger · Bad-Sanierung</small></div><span class="demo-task-state">Erledigt</span></li>
+                <li data-state="done"><span class="demo-task-icon" aria-hidden="true">✓</span><div><strong>Angebot vorbereiten</strong><small>Mit Ihren Preisen und Leistungen</small></div><span class="demo-task-state">Bereit</span></li>
+                <li data-state="done"><span class="demo-task-icon" aria-hidden="true">✓</span><div><strong>Rückruf einplanen</strong><small>Aufgabe für morgen angelegt</small></div><span class="demo-task-state">Erledigt</span></li>
+              </ol>
+            </div>
+            <div class="demo-result"><span class="demo-result-mark" aria-hidden="true">↳</span><div><strong id="demo-result-title">Für Sie bleibt nur die Freigabe.</strong><p id="demo-response">Anfrage erfasst, Rückruf eingeplant. Ihr Angebot liegt zur Prüfung bereit.</p></div></div>
+          </div>
+          <div class="demo-conversation" data-demo-view="chat" aria-hidden="true" inert>
+            <span class="demo-day">Heute · Ihr Chat mit Nils</span>
+            <div class="demo-chat-bubble is-user"><span class="demo-overline">Sie</span><p id="demo-chat-request"></p></div>
+            <div class="demo-chat-bubble" data-reveal="1"><span class="demo-overline">Nils</span><p id="demo-chat-answer"></p></div>
+            <div class="demo-chat-bubble is-user" data-reveal="2"><span class="demo-overline">Sie</span><p id="demo-chat-followup"></p></div>
+            <div class="demo-chat-bubble is-confirmation" data-reveal="3"><span class="demo-overline">Nils</span><p id="demo-chat-confirmation"></p><span class="demo-chat-check" aria-hidden="true">✓</span></div>
+            <div class="demo-typing" aria-hidden="true"><i></i><i></i><i></i><span>Nils schreibt …</span></div>
+          </div>
+          <div class="demo-calendar-view" data-demo-view="calendar" aria-hidden="true" inert>
+            <div class="demo-message"><span class="demo-overline">Ihre Nachricht</span><p>Nils, bitte für Familie Berger am Freitag um 19 Uhr einen Tisch für vier vorbereiten.</p></div>
+            <div class="demo-appointment" data-reveal="1">
+              <div class="demo-calendar-top"><span>Reservierung</span><span>Termin gefunden</span></div>
+              <div class="demo-calendar-date"><span>FR<strong>19:00</strong></span><div><h3>Familie Berger</h3><p>4 Personen · Freitagabend</p></div></div>
+              <div class="demo-week" aria-hidden="true"><span>MO</span><span>DI</span><span>MI</span><span>DO</span><span class="selected">FR</span><span>SA</span><span>SO</span></div>
+              <p class="demo-calendar-note">Ein freier Tisch ist verfügbar.</p>
+            </div>
+            <div class="demo-reminder" data-reveal="2"><span aria-hidden="true">↗</span><div><strong>Auch ans Erinnern gedacht.</strong><p>Erinnerung für Donnerstag vorbereitet.</p></div></div>
+            <div class="demo-calendar-result" data-reveal="3"><span class="demo-overline">Bereit für Ihre Freigabe</span><p>Bestätigung und Erinnerung stehen. Soll ich beides für Sie einplanen?</p></div>
+          </div>
+          <div class="demo-briefing-view" data-demo-view="briefing" aria-hidden="true" inert>
+            <div class="demo-briefing-intro"><span class="demo-overline">Ihr Morgenbriefing · 07:00</span><h3>Guten Morgen.<br>Ihr Tag ist schon sortiert.</h3><p>Das Wichtigste, bevor es losgeht.</p></div>
+            <div class="demo-metrics" data-reveal="1"><div><strong>3</strong><span>Termine</span></div><div><strong>2</strong><span>Freigaben</span></div><div><strong>1</strong><span>Priorität</span></div></div>
+            <div class="demo-agenda" data-reveal="2"><div><time>09:00</time><div><strong>Teammeeting</strong><span>Den Tag gemeinsam abstimmen</span></div></div><div><time>11:30</time><div><strong>Projektbesprechung</strong><span>Offene Punkte klären</span></div></div><div><time>14:00</time><div><strong>Rückruf</strong><span>Details zum Auftrag besprechen</span></div></div></div>
+            <div class="demo-priority" data-reveal="3"><span class="demo-overline">Das hat heute Priorität</span><strong>Zwei Anfragen warten auf Sie.</strong><p>Die Antworten sind vorbereitet. Sie geben sie nur noch frei.</p></div>
+          </div>
+          </div>
+          <div class="demo-footer"><span>Illustratives Beispiel</span><button type="button" id="demo-toggle" aria-label="Animation erneut abspielen" hidden><span id="demo-toggle-icon" aria-hidden="true">↻</span><span id="demo-toggle-label">Noch einmal</span></button></div>
+        </div>
+        <div class="demo-navigation" aria-label="Demo steuern">
+          <button type="button" id="demo-prev" aria-label="Vorheriges Beispiel" hidden>←</button>
+          <p id="demo-caption" aria-live="polite"><span id="demo-count">01 / 08</span><strong id="demo-title">Von der Anfrage zum Angebot</strong></p>
+          <button type="button" id="demo-next" aria-label="Nächstes Beispiel" hidden>→</button>
+        </div>
       </div>
-      <div class="demo-navigation" aria-label="Demo steuern">
-        <button type="button" id="demo-prev" aria-label="Vorheriges Beispiel">←</button>
-        <p id="demo-caption" aria-live="polite"><span id="demo-count">01 / 08</span><strong id="demo-title">Angebot vorbereiten</strong></p>
-        <button type="button" id="demo-next" aria-label="Nächstes Beispiel">→</button>
-      </div></div>
       <div class="hero-baseline"><span>Sie kümmern sich um Ihre Kunden.</span><span>Nils um den Rest.</span><a href="#so-funktionierts" aria-label="So funktioniert Nils">Nils entdecken <span aria-hidden="true">↓</span></a></div>
     </section>
     <section class="trust" aria-label="Bestehende Kunden"><div class="wrap trust-inner"><p class="trust-label">Bereits im Einsatz<br>bei Unternehmen wie</p><div class="logos"><span class="aaron" aria-label="AARON">AARON</span><img class="logo" src="assets/landing2/logo-dp-real.webp" alt="D&P" width="116" height="43"><img class="logo" src="assets/landing2/logo-adana-real.webp" alt="ADANA" width="116" height="43"><img class="logo" src="assets/landing2/logo-valeria-real.webp" alt="Valeria" width="116" height="43"><img class="logo" src="assets/landing2/logo-abrahairdabra.webp" alt="Abrahairdabra" width="116" height="43"></div></div></section>
@@ -135,11 +186,11 @@
   // für danke.html (Meta-Pixel-Lead), dann Weiterleitung. Siehe CLAUDE.md.
   const $ = (id) => document.getElementById(id);
   const BRANCHES = {
-    handwerk: {label:'Handwerk',first:'Sie bauen.',second:'Nils schreibt das Angebot.',description:'Angebote, Anfragen, Rechnungen, Bewertungen: Nils übernimmt sie. Angelernt auf Ihren Betrieb, bedient über WhatsApp, ohne neue Software.',sticker:'Feierabend statt Papierkram.',request:'Bad-Sanierung, 12 m², Dusche ersetzen, Fliesen neu. Familie Berger, Klosterneuburg.',file:'Angebot_Berger.pdf',type:'PDF',detail:'Ihre Preise · Ihr Layout',response:'Ihr Kostenvoranschlag ist fertig. Soll ich ihn zur Freigabe vorlegen?',scenes:[['22:34','Die Anfrage wartet nicht.','Ein Kunde meldet einen Rohrbruch. Nils erfasst die Details und informiert den vereinbarten Notfallkontakt.'],['16:15','Vom Einsatz direkt zur Rechnung.','Ihre Sprachnotiz vom Einsatz wird zum Rechnungsentwurf. Sie prüfen und geben frei.'],['07:00','Es regnet. Alle wissen Bescheid.','Nils bereitet die Nachricht zur Terminverschiebung vor und verständigt Kunden nach Ihrer Freigabe.']]},
-    gastro: {label:'Gastronomie',first:'Chef kocht.',second:'Nils macht den Rest.',description:'Ihre Küche läuft. Nils kümmert sich um die Büroarbeit. Als fertig eingerichtete KI-Box bereitet er Antworten, Reservierungen und Beiträge vor. Sie bedienen ihn über WhatsApp.',sticker:'Mehr Zeit für Ihre Gäste.',request:'Neue 2-Sterne-Bewertung: „Essen gut, aber lange gewartet.“ Bitte eine freundliche Antwort vorbereiten.',file:'Antwort auf Bewertung',type:'TXT',detail:'In Ihrem Ton · zur Freigabe',response:'Vielen Dank für Ihren Besuch und das ehrliche Feedback. Die Wartezeit tut uns leid. Wir nehmen das mit ins Team. – Passt der Entwurf so für Sie?',scenes:[['07:00','Das Tagesgericht ist schon online.','Sie schicken das heutige Menü. Nils erstellt einen Beitrag und veröffentlicht ihn nach Ihrer Freigabe.'],['17:30','Ein Tisch. Eine Erinnerung.','Nils erfasst Reservierungsanfragen und erinnert Gäste nach den von Ihnen festgelegten Regeln.'],['23:10','Die letzte Anfrage? Beantwortet.','Öffnungszeiten, Allergene, Gruppenanfragen: Nils antwortet mit Ihrem freigegebenen Betriebswissen.']]},
-    immo: {label:'Immobilien',first:'Wenige Eckdaten.',second:'Ein Exposé zur Freigabe.',description:'Sie schicken die Eckdaten per WhatsApp. Nils bereitet das Exposé für willhaben vor. Ihr KI-Mitarbeiter als fertig eingerichtete Box kennt Ihren Stil und Ihre Abläufe.',sticker:'Mehr Besichtigungen. Weniger Büro.',request:'Neue Wohnung: 85 m², 3 Zimmer, Balkon, 1190 Wien. Bitte ein Exposé vorbereiten.',file:'Expose_1190_Wien.pdf',type:'PDF',detail:'Ihre Eckdaten · Ihr Stil',response:'Der Exposé-Entwurf ist fertig. Fehlende Angaben habe ich markiert. Bitte prüfen Sie die Daten vor der Veröffentlichung.',scenes:[['08:10','Die richtigen Interessenten zuerst.','Nils strukturiert Anfragen nach Ihren Kriterien und bereitet die nächste Antwort vor.'],['11:30','Besichtigung? Abgestimmt.','Terminvorschläge und Erinnerungen laufen nach Ihren Regeln. Sie behalten den Überblick.'],['17:00','Der Eigentümer ist im Bild.','Anfragen und Aktivitäten werden zum Berichtsentwurf. Sie prüfen, Nils bereitet den Versand vor.']]},
-    hausverwaltung: {label:'Hausverwaltung',first:'Mieter schreibt um 23 Uhr.',second:'Sie schlafen durch.',description:'Nils nimmt Meldungen entgegen, erfasst die Details und informiert den richtigen Kontakt. Ihre fertig eingerichtete KI-Box unterstützt die Verwaltung. Auch außerhalb der Bürozeiten.',sticker:'Eine Meldung. Ein klarer Ablauf.',request:'Wasser tropft von der Decke, Stiege 2, Top 14. Was soll ich tun?',file:'Ticket · Wasserschaden',type:'INFO',detail:'Stiege 2 · Top 14',response:'Die Meldung ist erfasst. Ich informiere den hinterlegten Notfallkontakt. Bei akuter Gefahr wenden Sie sich bitte direkt an den Notruf.',scenes:[['23:04','Die erste Antwort steht.','Nils erfasst eine Schadensmeldung und gibt die von Ihnen definierten ersten Hinweise.'],['23:05','Der richtige Kontakt weiß Bescheid.','Je nach Meldung informiert Nils den hinterlegten Hausmeister oder Notfalldienst.'],['08:00','Alle auf demselben Stand.','Statusmeldungen und offene Vorgänge werden für Ihr Team und die Eigentümer zusammengefasst.']]},
-    kanzlei: {label:'Kanzlei',first:'KI für Ihre Kanzlei.',second:'Mandantendaten bleiben im Haus.',description:'Zuerst prüfen wir Ihren Einzelfall und die Verschwiegenheitspflichten. Dann richten wir Nils mit lokalen Modellen und internem Zugang ein. Sensible Mandantendaten laufen nicht über WhatsApp.',sticker:'Lokal. Kontrollierbar. Für Sie.',request:'Fasse die freigegebenen internen Vorgaben zur Berichtsvorbereitung zusammen.',file:'Interne Wissensabfrage',type:'LOKAL',detail:'Lokales Modell · interner Zugang',response:'Die Zusammenfassung liegt intern zur Prüfung bereit. Die verwendeten Quellen aus Ihrem freigegebenen Wissensbestand sind beigefügt.',scenes:[['09:00','Einzelfall zuerst.','Wir prüfen Datenflüsse, Verschwiegenheit und erlaubte Aufgaben, bevor wir eine Umsetzung festlegen.'],['11:15','Internes Wissen auf Zuruf.','Nils bereitet Antworten aus freigegebenen internen Unterlagen mit Quellenhinweisen vor.'],['16:30','Berichte besser vorbereiten.','Strukturieren und zusammenfassen im lokalen System. Die fachliche Prüfung bleibt bei Ihnen.']]}
+    handwerk: {label:'Handwerk',first:'Sie bauen.',second:'Nils schreibt das Angebot.',description:'Angebote, Anfragen, Rechnungen, Bewertungen: Nils übernimmt sie. Angelernt auf Ihren Betrieb, bedient über WhatsApp, ohne neue Software.',scenes:[['22:34','Die Anfrage wartet nicht.','Ein Kunde meldet einen Rohrbruch. Nils erfasst die Details und informiert den vereinbarten Notfallkontakt.'],['16:15','Vom Einsatz direkt zur Rechnung.','Ihre Sprachnotiz vom Einsatz wird zum Rechnungsentwurf. Sie prüfen und geben frei.'],['07:00','Es regnet. Alle wissen Bescheid.','Nils bereitet die Nachricht zur Terminverschiebung vor und verständigt Kunden nach Ihrer Freigabe.']]},
+    gastro: {label:'Gastronomie',first:'Chef kocht.',second:'Nils macht den Rest.',description:'Ihre Küche läuft. Nils kümmert sich um die Büroarbeit. Als fertig eingerichtete KI-Box bereitet er Antworten, Reservierungen und Beiträge vor. Sie bedienen ihn über WhatsApp.',scenes:[['07:00','Das Tagesgericht ist schon online.','Sie schicken das heutige Menü. Nils erstellt einen Beitrag und veröffentlicht ihn nach Ihrer Freigabe.'],['17:30','Ein Tisch. Eine Erinnerung.','Nils erfasst Reservierungsanfragen und erinnert Gäste nach den von Ihnen festgelegten Regeln.'],['23:10','Die letzte Anfrage? Beantwortet.','Öffnungszeiten, Allergene, Gruppenanfragen: Nils antwortet mit Ihrem freigegebenen Betriebswissen.']]},
+    immo: {label:'Immobilien',first:'Wenige Eckdaten.',second:'Ein Exposé zur Freigabe.',description:'Sie schicken die Eckdaten per WhatsApp. Nils bereitet das Exposé für willhaben vor. Ihr KI-Mitarbeiter als fertig eingerichtete Box kennt Ihren Stil und Ihre Abläufe.',scenes:[['08:10','Die richtigen Interessenten zuerst.','Nils strukturiert Anfragen nach Ihren Kriterien und bereitet die nächste Antwort vor.'],['11:30','Besichtigung? Abgestimmt.','Terminvorschläge und Erinnerungen laufen nach Ihren Regeln. Sie behalten den Überblick.'],['17:00','Der Eigentümer ist im Bild.','Anfragen und Aktivitäten werden zum Berichtsentwurf. Sie prüfen, Nils bereitet den Versand vor.']]},
+    hausverwaltung: {label:'Hausverwaltung',first:'Mieter schreibt um 23 Uhr.',second:'Sie schlafen durch.',description:'Nils nimmt Meldungen entgegen, erfasst die Details und informiert den richtigen Kontakt. Ihre fertig eingerichtete KI-Box unterstützt die Verwaltung. Auch außerhalb der Bürozeiten.',scenes:[['23:04','Die erste Antwort steht.','Nils erfasst eine Schadensmeldung und gibt die von Ihnen definierten ersten Hinweise.'],['23:05','Der richtige Kontakt weiß Bescheid.','Je nach Meldung informiert Nils den hinterlegten Hausmeister oder Notfalldienst.'],['08:00','Alle auf demselben Stand.','Statusmeldungen und offene Vorgänge werden für Ihr Team und die Eigentümer zusammengefasst.']]},
+    kanzlei: {label:'Kanzlei',first:'KI für Ihre Kanzlei.',second:'Mandantendaten bleiben im Haus.',description:'Zuerst prüfen wir Ihren Einzelfall und die Verschwiegenheitspflichten. Dann richten wir Nils mit lokalen Modellen und internem Zugang ein. Sensible Mandantendaten laufen nicht über WhatsApp.',scenes:[['09:00','Einzelfall zuerst.','Wir prüfen Datenflüsse, Verschwiegenheit und erlaubte Aufgaben, bevor wir eine Umsetzung festlegen.'],['11:15','Internes Wissen auf Zuruf.','Nils bereitet Antworten aus freigegebenen internen Unterlagen mit Quellenhinweisen vor.'],['16:30','Berichte besser vorbereiten.','Strukturieren und zusammenfassen im lokalen System. Die fachliche Prüfung bleibt bei Ihnen.']]}
   };
   const params = new URLSearchParams(location.search);
   const initialBranch = Object.hasOwn(BRANCHES,params.get('b')) ? params.get('b') : 'handwerk';
@@ -158,7 +209,7 @@
   }
   function setBranch(key) {
     activeBranch=key; const b=BRANCHES[key]; const local=key==='kanzlei';
-    for (const [id,value] of Object.entries({'hero-description':b.description,'demo-request':b.request,'demo-file':b.file,'demo-response':b.response,'hero-sticker':b.sticker,'demo-file-type':b.type,'demo-file-detail':b.detail})) $(id).textContent=value;
+    $('hero-description').textContent=b.description;
     $('chat-channel').textContent=local?'Ihr KI-Mitarbeiter · intern':'Ihr KI-Mitarbeiter · WhatsApp';
     $('steps-title').replaceChildren(document.createTextNode(local?'Ihr Wissen.':'Sie können WhatsApp?'),document.createElement('br'),document.createTextNode(local?'Ihr interner Zugang.':'Dann können Sie Nils.'));
     $('steps-description').textContent=local?'Einzelfall prüfen, lokal einrichten, gemeinsam testen.':'Kein neues Dashboard. Kein Softwareprojekt. Drei Schritte zu weniger Büroarbeit.';
@@ -177,30 +228,117 @@
   }
   setBranch(initialBranch);
   document.querySelectorAll('[data-privacy]').forEach(button=>button.addEventListener('click',()=>setPrivacy(button.dataset.privacy)));
-  // Illustrative workflows adapted from the pitch deck, pp. 2, 13–16.
-  // Switching examples never changes the selected industry or lead data.
+  // Illustrative workflows. Navigation never changes the industry or lead data.
+  const branchDemos = {
+    handwerk: {title:'Von der Anfrage zum Angebot',request:'Nils, bitte die Anfrage von Familie Berger erfassen, das Angebot vorbereiten und einen Rückruf einplanen.',tasks:[['Kundenanfrage erfassen','Familie Berger · Bad-Sanierung','Erledigt'],['Angebot vorbereiten','Mit Ihren Preisen und Leistungen','Bereit'],['Rückruf einplanen','Aufgabe für morgen angelegt','Erledigt']],result:'Für Sie bleibt nur die Freigabe.',response:'Anfrage erfasst, Rückruf eingeplant. Ihr Angebot liegt zur Prüfung bereit.'},
+    gastro: {title:'Aus Feedback wird Service',request:'Nils, neue Bewertung: „Essen gut, aber lange gewartet.“ Bitte eine Antwort vorbereiten und ans Team weitergeben.',tasks:[['Bewertung erfassen','Feedback zur Wartezeit erkannt','Erledigt'],['Antwort formulieren','Freundlich und in Ihrem Ton','Bereit'],['Team informieren','Hinweis für die nächste Besprechung','Erledigt']],result:'Aufmerksam. Auch nach Feierabend.',response:'Ihr Team ist informiert. Die freundliche Antwort liegt zur Freigabe bereit.'},
+    immo: {title:'Von den Eckdaten zum Exposé',request:'Nils, neue Wohnung: 85 m², 3 Zimmer, Balkon, 1190 Wien. Bitte das Exposé vorbereiten.',tasks:[['Eckdaten strukturieren','85 m² · 3 Zimmer · 1190 Wien','Erledigt'],['Exposé formulieren','In Ihrem Stil, für Ihr Objekt','Bereit'],['Angaben prüfen','Fehlende Details markiert','Erledigt']],result:'Bereit für Ihren letzten Blick.',response:'Das Exposé liegt zur Prüfung bereit. Fehlende Angaben sind für Sie markiert.'},
+    hausverwaltung: {title:'Eine Meldung. Alles in Bewegung.',request:'Wasser tropft von der Decke, Stiege 2, Top 14. Bitte die Meldung aufnehmen und den Notfallkontakt informieren.',tasks:[['Schaden aufnehmen','Stiege 2 · Top 14 · Wasserschaden','Erledigt'],['Notfallkontakt informieren','Nach Ihrem hinterlegten Ablauf','Erledigt'],['Vorgang dokumentieren','Alle Details für Ihr Team','Erledigt']],result:'Der richtige Kontakt weiß Bescheid.',response:'Meldung erfasst, Notfallkontakt informiert. Ihr Team findet alle Details im Vorgang.'},
+    kanzlei: {title:'Internes Wissen. Sofort griffbereit.',request:'Nils, fasse die freigegebenen internen Vorgaben zur Berichtsvorbereitung zusammen.',tasks:[['Interne Quellen durchsuchen','Nur freigegebene Unterlagen','Erledigt'],['Vorgaben zusammenfassen','Verarbeitung im lokalen System','Bereit'],['Quellen zuordnen','Fundstellen zur fachlichen Prüfung','Erledigt']],result:'Ihr Wissen bleibt im Haus.',response:'Die Zusammenfassung mit Quellen liegt intern bereit. Die fachliche Prüfung bleibt bei Ihnen.'}
+  };
   const demoExamples = [
-    {key:'review',title:'Bewertung beantworten',sticker:'Auch Kritik verdient eine Antwort.',request:'„Essen gut, aber lange gewartet.“ Bitte eine freundliche Antwort auf diese Bewertung.',file:'Bewertungsantwort.txt',type:'TXT',detail:'Ihr Ton · zur Freigabe',response:'Danke für Ihr Feedback! Die Wartezeit tut uns leid. Wir besprechen das im Team. – Hier ist Ihr Antwortentwurf.',approval:'Danke. Ich prüfe die Antwort.'},
-    {key:'reservation',title:'Reservierung & Erinnerung',sticker:'Ein Tisch. Alles vorbereitet.',request:'Familie Berger möchte Freitag um 19 Uhr einen Tisch für vier. Bitte im Kalender prüfen.',file:'Reservierung_Berger',type:'INFO',detail:'Kalender · Bestätigung',response:'Der Tisch ist frei. Bestätigung und Erinnerung für den Vortag sind vorbereitet. Soll ich sie einplanen?',approval:'Ja, bitte so einplanen.'},
-    {key:'social',title:'Social Post vorbereiten',sticker:'Drei Stichworte. Ein fertiger Post.',request:'Morgen: Kürbisrisotto, regional, 12,90 €. Bitte einen Instagram-Beitrag vorbereiten.',file:'Tagesgericht_Post.txt',type:'TXT',detail:'Text · Bildidee · Zeitpunkt',response:'Der Beitragsentwurf mit Bildidee ist fertig. Veröffentlichung morgen um 7 Uhr – nach Ihrer Freigabe.',approval:'Ich schaue mir den Entwurf an.'},
-    {key:'invoice',title:'Offene Rechnung nachfassen',sticker:'Freundlich erinnern. Zeit sparen.',request:'Rechnung 1042 ist seit 14 Tagen offen. Bitte eine freundliche Erinnerung vorbereiten.',file:'Erinnerung_1042.pdf',type:'PDF',detail:'Offene Posten · Ihr Ton',response:'Der Entwurf mit Rechnungsnummer, Betrag und Zahlungsziel liegt bereit. Bitte prüfen Sie ihn vor dem Versand.',approval:'Danke, ich prüfe die Angaben.'},
-    {key:'briefing',title:'Morgenbriefing erhalten',sticker:'Der Tag beginnt mit Überblick.',request:'Guten Morgen, Nils. Welche Termine und offenen Aufgaben stehen heute an?',file:'Morgenbriefing.txt',type:'INFO',detail:'Termine · Anfragen · Prioritäten',response:'9 Uhr: Teammeeting. Zwei Anfragen warten auf Freigabe. Das Angebot Berger ist heute fällig. Ihre Übersicht ist bereit.',approval:'Zeig mir zuerst die Anfragen.'},
-    {key:'meeting',title:'Meeting-Protokoll erstellen',sticker:'Besprochen. Festgehalten.',request:'Meeting: Anna prüft das Angebot bis Freitag. Lukas klärt den Liefertermin. Bitte protokollieren.',file:'Meeting_Protokoll.pdf',type:'PDF',detail:'Beschlüsse · Zuständige · Fristen',response:'Das Protokoll mit Aufgaben, Verantwortlichen und Fristen ist vorbereitet. Soll ich es Ihnen zur Prüfung vorlegen?',approval:'Ja, bitte. Ich lese es durch.'},
-    {key:'knowledge',title:'Internes Wissen finden',sticker:'Ihr Wissen. Auf Zuruf.',request:'Was steht in unseren freigegebenen Unterlagen zur Einarbeitung neuer Mitarbeiter?',file:'Einarbeitung_Quellen.pdf',type:'PDF',detail:'Eigenes Wissen · mit Quellen',response:'Die Zusammenfassung mit Verweisen auf Ihre internen Unterlagen ist fertig. Fehlende Angaben sind markiert.',approval:'Gut, ich sehe mir die Quellen an.'}
+    {key:'review',...branchDemos.gastro},
+    {key:'reservation',title:'Reservierung & Erinnerung',request:'Nils, Familie Berger möchte Freitag um 19 Uhr einen Tisch für vier. Bitte alles vorbereiten.',tasks:[['Verfügbarkeit prüfen','Freitag · 19 Uhr · 4 Personen','Erledigt'],['Bestätigung vorbereiten','Alle Details für Ihre Gäste','Bereit'],['Erinnerung vorbereiten','Für den Tag vor dem Besuch','Bereit']],result:'Ein Tisch. Alles vorbereitet.',response:'Der Tisch ist frei. Bestätigung und Erinnerung warten auf Ihre Freigabe.'},
+    {key:'social',title:'Ihr nächster Social Post',request:'Nils, morgen gibt es regionales Kürbisrisotto um 12,90 €. Bitte einen Instagram-Beitrag vorbereiten.',tasks:[['Beitrag schreiben','Ihr Tagesgericht, in Ihrem Ton','Bereit'],['Bildidee entwickeln','Passend zu Ihrem Restaurant','Bereit'],['Veröffentlichung vorbereiten','Morgen um 7 Uhr · nach Freigabe','Bereit']],result:'Sie kochen. Nils schreibt.',response:'Text, Bildidee und Zeitpunkt stehen. Sie geben den Beitrag noch frei.'},
+    {key:'invoice',title:'Offene Rechnungen im Blick',request:'Nils, Rechnung 1042 ist seit 14 Tagen offen. Bitte eine freundliche Erinnerung vorbereiten.',tasks:[['Offenen Posten prüfen','Rechnung 1042 · Zahlungsstatus','Erledigt'],['Erinnerung formulieren','Freundlich, mit allen Angaben','Bereit'],['Wiedervorlage anlegen','Damit nichts liegen bleibt','Erledigt']],result:'Nachfassen ohne Hinterherlaufen.',response:'Die Erinnerung liegt zur Prüfung bereit. Die nächste Wiedervorlage ist angelegt.'},
+    {key:'briefing',title:'Ihr Morgen. Schon sortiert.',request:'Guten Morgen, Nils. Welche Termine und offenen Aufgaben stehen heute an?',tasks:[['Termine zusammenstellen','Heute um 9 Uhr: Teammeeting','Erledigt'],['Offene Aufgaben sichten','2 Anfragen warten auf Freigabe','Erledigt'],['Prioritäten zusammenfassen','Bericht heute zur Prüfung fällig','Bereit']],result:'Überblick, bevor der Tag losgeht.',response:'Ihr Tag ist sortiert: erst die zwei Anfragen freigeben, dann den Bericht prüfen.'},
+    {key:'meeting',title:'Aus Besprechungen werden Aufgaben',request:'Nils, bitte festhalten: Anna prüft den Bericht bis Freitag. Lukas klärt den Liefertermin.',tasks:[['Besprechung zusammenfassen','Die wichtigsten Ergebnisse','Bereit'],['Aufgaben zuordnen','Anna: Bericht · Lukas: Liefertermin','Erledigt'],['Fristen vormerken','Berichtsprüfung bis Freitag','Erledigt']],result:'Besprochen. Festgehalten.',response:'Zusammenfassung, Zuständigkeiten und Fristen sind bereit für Ihre Prüfung.'},
+    {key:'knowledge',...branchDemos.kanzlei,title:'Ihr Betriebswissen auf Zuruf',request:'Nils, was steht in unseren freigegebenen Unterlagen zur Einarbeitung neuer Mitarbeiter?',tasks:[['Betriebswissen durchsuchen','Ihre freigegebenen Unterlagen','Erledigt'],['Antwort zusammenfassen','Die wichtigsten Schritte im Überblick','Bereit'],['Quellen verknüpfen','Direkt zur passenden Fundstelle','Erledigt']],result:'Weniger suchen. Mehr wissen.',response:'Die Schritte zur Einarbeitung sind zusammengefasst und mit Ihren Quellen verknüpft.'}
   ];
-  const firstDemo = {...BRANCHES[initialBranch], title:({handwerk:'Angebot vorbereiten',gastro:'Bewertung beantworten',immo:'Exposé vorbereiten',hausverwaltung:'Schadensmeldung erfassen',kanzlei:'Internes Wissen finden'})[initialBranch], approval:'Passt. Ich schaue kurz drüber.'};
-  const demos = [firstDemo, ...demoExamples.filter(example => initialBranch === 'kanzlei' ? ['briefing','meeting'].includes(example.key) : !(initialBranch === 'gastro' && example.key === 'review'))];
-  let demoIndex = 0;
+  const demos = [branchDemos[initialBranch], ...demoExamples.filter(example => initialBranch === 'kanzlei' ? ['briefing','meeting'].includes(example.key) : !(initialBranch === 'gastro' && example.key === 'review'))];
+  // Different content gets a fitting presentation, rather than the same checklist.
+  const demoChats = {
+    review: {answer:'Danke für Ihr ehrliches Feedback! Schön, dass es Ihnen geschmeckt hat. Die Wartezeit tut uns leid – wir nehmen das mit ins Team.',followup:'Passt, bitte die Antwort veröffentlichen.',confirmation:'Erledigt. Die Antwort ist veröffentlicht und Ihr Team ist informiert.'},
+    social: {answer:'Regional, cremig, herbstlich: Morgen gibt’s unser Kürbisrisotto um 12,90 €. Wir freuen uns auf Sie! 🍂',followup:'Gefällt mir. Morgen um 7 Uhr veröffentlichen.',confirmation:'Ist eingeplant. Ihr Beitrag geht morgen um 7 Uhr online.'},
+    meeting: {answer:'Festgehalten: Anna prüft den Bericht bis Freitag. Lukas klärt den Liefertermin. Beide Zuständigkeiten sind zugeordnet.',followup:'Erinnere Anna bitte am Donnerstag.',confirmation:'Die Erinnerung für Donnerstag ist vorgemerkt. So bleibt die Frist im Blick.'},
+    knowledge: {answer:'Unsere Einarbeitung startet mit dem Team-Rundgang, den Systemzugängen und einem festen Ansprechpartner. Grundlage: Ihr interner Einarbeitungsleitfaden.',followup:'Und wer kümmert sich um die Zugänge?',confirmation:'Laut IT-Checkliste übernimmt das Ihre IT-Ansprechperson. Die Fundstelle ist Abschnitt „Erster Arbeitstag“.'}
+  };
+  demos.forEach(example => { example.format = example.key === 'reservation' ? 'calendar' : example.key === 'briefing' ? 'briefing' : demoChats[example.key] ? 'chat' : 'tasks'; });
+  const demoVisual = document.querySelector('.hero-visual');
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let demoIndex = 0, demoStep = 3, demoTimer = null, demoPaused = false, demoInView = !('IntersectionObserver' in window);
+  function updateDemoState() {
+    const complete = demoStep === 3;
+    demoVisual.dataset.step = String(demoStep);
+    document.querySelectorAll('[data-reveal]').forEach(node => { node.classList.toggle('is-revealed', Number(node.dataset.reveal) <= demoStep); });
+    demoVisual.dataset.phase = complete ? 'complete' : 'working';
+    demoVisual.classList.toggle('paused', demoPaused || !demoInView || document.hidden);
+    $('demo-work-label').textContent = complete ? 'Alles vorbereitet.' : (demoPaused ? 'Ablauf pausiert' : 'Nils kümmert sich darum');
+    $('demo-progress-count').textContent = demoStep + ' / 3';
+    document.querySelector('.demo-progress').setAttribute('aria-valuenow', String(demoStep));
+    $('demo-progress-fill').style.width = (demoStep / 3 * 100) + '%';
+    [...$('demo-task-list').children].forEach((row, i) => {
+      const state = i < demoStep ? 'done' : i === demoStep ? 'active' : 'waiting';
+      row.dataset.state = state;
+      row.querySelector('.demo-task-icon').textContent = state === 'done' ? '✓' : '';
+      row.querySelector('.demo-task-state').textContent = state === 'done' ? row.dataset.completeStatus : state === 'active' ? 'In Arbeit' : 'Danach';
+    });
+    const label = complete ? 'Noch einmal' : demoPaused ? 'Fortsetzen' : 'Pause';
+    $('demo-toggle-label').textContent = label;
+    $('demo-toggle-icon').textContent = complete ? '↻' : demoPaused ? '▷' : 'Ⅱ';
+    $('demo-toggle').setAttribute('aria-label', complete ? 'Animation erneut abspielen' : demoPaused ? 'Animation fortsetzen' : 'Animation pausieren');
+    // Keep the finished answer readable to assistive technology throughout the animation.
+    $('demo-toggle').hidden = motionPreference.matches;
+  }
+  function scheduleDemo() {
+    window.clearTimeout(demoTimer);
+    updateDemoState();
+    if (demoStep === 3 || demoPaused || !demoInView || document.hidden || motionPreference.matches) return;
+    demoTimer = window.setTimeout(() => { demoStep++; scheduleDemo(); }, 2200);
+  }
   function renderDemo(index) {
     demoIndex = (index + demos.length) % demos.length;
     const example = demos[demoIndex];
-    for (const [id,value] of Object.entries({'demo-request':example.request,'demo-file':example.file,'demo-response':example.response,'hero-sticker':example.sticker,'demo-file-type':example.type,'demo-file-detail':example.detail,'demo-approval':example.approval,'demo-title':example.title})) $(id).textContent = value;
+    demoVisual.dataset.format = example.format;
+    $('demo-heading').textContent = ({tasks:'Nils übernimmt.',chat:'Nils antwortet.',calendar:'Nils denkt mit.',briefing:'Ihr Tag mit Nils.'})[example.format];
+    document.querySelectorAll('[data-demo-view]').forEach(view => {
+      const active = view.dataset.demoView === example.format;
+      view.classList.toggle('is-active', active);
+      view.setAttribute('aria-hidden', String(!active));
+      view.inert = !active;
+    });
+    document.querySelectorAll('[data-demo-format]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.demoFormat === example.format)));
+    // Populate the chat even while inactive, so its full height stays reserved.
+    const chatExample = example.format === 'chat' ? example : demos.find(item => item.format === 'chat');
+    const chat = demoChats[chatExample.key];
+    for (const [id,text] of Object.entries({'demo-chat-request':chatExample.request,'demo-chat-answer':chat.answer,'demo-chat-followup':chat.followup,'demo-chat-confirmation':chat.confirmation})) $(id).textContent = text;
+    const taskExample = example.format === 'tasks' ? example : demos.find(item => item.format === 'tasks');
+    for (const [id,value] of Object.entries({'demo-request':taskExample.request,'demo-response':taskExample.response,'demo-result-title':taskExample.result,'demo-title':example.title})) $(id).textContent = value;
     $('demo-count').textContent = String(demoIndex + 1).padStart(2,'0') + ' / ' + String(demos.length).padStart(2,'0');
+    $('demo-task-list').replaceChildren(...taskExample.tasks.map(([title, detail, statusText]) => {
+      const row = document.createElement('li');
+      row.dataset.completeStatus = statusText;
+      const icon = document.createElement('span'); icon.className = 'demo-task-icon'; icon.setAttribute('aria-hidden','true');
+      const content = document.createElement('div');
+      const name = document.createElement('strong'); name.textContent = title;
+      const note = document.createElement('small'); note.textContent = detail;
+      content.append(name, note);
+      const status = document.createElement('span'); status.className = 'demo-task-state';
+      row.append(icon, content, status); return row;
+    }));
+    demoStep = motionPreference.matches ? 3 : 0;
+    scheduleDemo();
   }
-  // Examples change only on request; no pause control or automatic rotation needed.
   for (const [id,direction] of [['demo-prev',-1],['demo-next',1]]) {
+    $(id).hidden = false;
     $(id).addEventListener('click',() => renderDemo(demoIndex + direction));
   }
+  document.querySelector('.demo-formats').hidden = false;
+  document.querySelectorAll('[data-demo-format]').forEach(button => {
+    const index = demos.findIndex(example => example.format === button.dataset.demoFormat);
+    button.hidden = index < 0;
+    button.addEventListener('click', () => renderDemo(index));
+  });
+  $('demo-toggle').addEventListener('click', () => {
+    if (demoStep === 3) { demoStep = 0; demoPaused = false; }
+    else demoPaused = !demoPaused;
+    scheduleDemo();
+  });
+  document.addEventListener('visibilitychange', scheduleDemo);
+  if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
+    demoInView = entries[0].isIntersecting; scheduleDemo();
+  }, {threshold: .25}).observe(demoVisual);
+  motionPreference.addEventListener('change', () => { if (motionPreference.matches) demoStep = 3; scheduleDemo(); });
   renderDemo(0);
   const money = new Intl.NumberFormat('de-AT',{style:'currency',currency:'EUR',maximumFractionDigits:0});
   function roiValue(){return Math.round(Number($('hours').value)*Number($('rate').value)*52/12);}

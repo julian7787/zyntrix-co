@@ -46,3 +46,17 @@ Geprüft bei 320, 390, 768, 1024 und 1440 px: fünf Seiten ohne horizontalen Üb
 ### Gleichbleibende Kontaktkartenhöhe
 
 Auf Nutzerwunsch bleibt die Kontaktkarte wieder über alle Schritte gleich hoch. Quiz, Kontaktdaten und Bestätigung teilen sich eine Rasterzelle; unsichtbare Panels bleiben höhenwirksam und unsichtbare Fehlertexte reservieren drei Zeilen. Der letzte Screen verzichtet dafür auf den wiederholten Einleitungstext und die Antwort-Tags. „Antworten ändern“ bleibt verfügbar. Die Antwortdaten werden weiterhin mitgesendet. Bei 320, 390, 768, 1024 und 1440 px wurde die unveränderte Kartenhöhe über alle Fragen, fünf Branchen, Kontaktdateneingabe, Zurückgehen und einen simulierten Versandfehler geprüft.
+
+### Hero: Nachricht, Aufgaben und Ergebnis
+
+Die Smartphone-/Dokumentillustration wurde durch eine kombinierte Chat- und Aufgabenansicht ersetzt. Eine Nachricht startet drei nachvollziehbare Arbeitsschritte. Fortschrittsbalken, Bearbeitungsstatus und Häkchen zeigen den Ablauf; anschließend erscheint die Ergebnisantwort. Entwürfe bleiben ausdrücklich zur Prüfung oder Freigabe. Die Darstellung nutzt weiterhin Petrol, Limette, die lokalen Schriften und den Nils-Avatar.
+
+Jedes Beispiel läuft einmal in drei Schritten à 2,2 Sekunden. Pause, Fortsetzen und erneutes Abspielen sind möglich; der Beispielwechsel bleibt manuell. Außerhalb des sichtbaren Bereichs und bei verborgenem Browser-Tab pausiert der Ablauf. Bei reduzierter Bewegung und ohne JavaScript wird direkt das fertige Ergebnis dargestellt. Die fünf Branchen behalten ihre passenden Einstiegsbeispiele; Kanzlei-Beispiele nutzen ausschließlich den internen Zugang. Auf schmalen Tablets bis 900 px stehen Text und Demo untereinander.
+
+Geprüft in Chrome: sämtliche Beispiele aller fünf Branchen bei 320, 390, 768, 850, 940, 1024 und 1440 px ohne horizontalen Überlauf oder JavaScript-Fehler. Pause, Fortsetzen, Wiederholen, Pause außerhalb des sichtbaren Bereichs sowie Wechsel zu reduzierter Bewegung funktionieren. Rechner und vier Quiz-Schritte wurden ebenfalls geprüft; externe Requests waren blockiert.
+
+### Unterschiedliche Hero-Karten
+
+Die Beispiele nutzen jetzt vier eigenständige Darstellungen: Aufgabenliste, Chat ohne Dokumentanhang, Reservierung mit Kalender und Erinnerung sowie Morgenbriefing mit Kennzahlen, Terminen und Priorität. Reiter erlauben die direkte Auswahl einer Darstellung; die Pfeile führen weiterhin durch die einzelnen Beispiele. Chatnachrichten, Kalenderdetails und Briefing-Elemente erscheinen schrittweise mit demselben Pause-/Wiederholungsmechanismus. Inaktive Ansichten sind für Bedienung und Screenreader gesperrt. Die Kanzlei-Variante zeigt nur Aufgaben, internen Chat und Überblick.
+
+Alle Beispiele aller fünf Branchen wurden bei 320, 390, 768, 940, 1024 und 1440 px auf Überläufe und Laufzeitfehler geprüft. Zusätzlich geprüft: direkte Auswahl aller vier Darstellungen, Chat-Ablauf, Pause, Wiederholung und reduzierte Bewegung. Die lokale Vorschau wurde aktualisiert.
