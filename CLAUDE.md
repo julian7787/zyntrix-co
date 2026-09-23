@@ -24,13 +24,13 @@ Im Claude-Desktop-Browser: `preview_start` mit `site` (`.claude/launch.json`, Po
   - `--muted` `#556E77` (Fließtext sekundär) · `--line` `#E2E7E8` (Linien, Rahmen) · `--paper`/`--white` `#FFFFFF`
   - Flächen: `#F2F4F4` (Panels, Tags) · `#F9FBEE` (Hover) · `#2A5361` (Fläche auf Dunkel)
   - Nur im jeweiligen Kontext: `#C0474B` Fehler · `#B0791A` Hinweis · `#1F7A5A` Status · `#D9FDD3` WhatsApp-Bubble
-- **Schriften:** Space Grotesk (`assets/landing2/space-grotesk.woff2`) für Überschriften, Buttons, Marke; Inter (`assets/landing2/inter.woff2`) für Text. Keine Google-Fonts-Einbindung, keine weiteren Schriften. Radius `--radius` 18px.
+- **Schriften:** Space Grotesk (`assets/landing2/space-grotesk.woff2`) für Überschriften, Buttons, Marke; Inter (`assets/landing2/inter.woff2`) für Text. Keine Google-Fonts-Einbindung, keine weiteren Schriften. Radius `--radius` 10px; Abschnittsabstände 64–112px wie in der Referenz-Startseite.
 - **Bildsprache/Marke:** Nils-Avatar `assets/landing2/nils.webp`, Kundenlogos aus `assets/landing2/`, Tonalität wie auf der Startseite (Kunden werden gesiezt).
 - Abweichende Seiten sind Altlasten, keine Vorlage: `archiv/`, `assets/legacy/`.
 
 ## `index.html` – Startseite (ehem. „Landingpage 2“)
 
-Normales, handgeschriebenes HTML (~70 KB, eine Datei): CSS im `<style>`, Logik in einem Inline-`<script>` am Ende (Vanilla JS, `$()` = `getElementById`). Viele Regeln stehen minifiziert in einer Zeile – Änderungen per exaktem String-Replace. Assets (Fonts, Nils-Avatar, Kundenlogos, OG-Bild) unter `assets/landing2/`, relativ referenziert. Sonstiges: `docs/landing2-umsetzung.md`.
+Normales, handgeschriebenes HTML (~70 KB, eine Datei): gemeinsames CSS in `site.css`, Logik in einem Inline-`<script>` am Ende (Vanilla JS, `$()` = `getElementById`). Viele Regeln stehen minifiziert in einer Zeile – Änderungen per exaktem String-Replace. Assets (Fonts, Nils-Avatar, Kundenlogos, OG-Bild) unter `assets/landing2/`, relativ referenziert. Sonstiges: `docs/landing2-umsetzung.md`.
 
 - Branchen-Varianten per URL: `?b=handwerk` (Standard), `gastro`, `immo`, `hausverwaltung`, `kanzlei` (`BRANCHES` im Script).
 - Anker: `#inhalt`, `#so-funktionierts`, `#beispiele`, `#rechner`, `#datenschutz`, `#referenzen`, `#faq`, `#potenzialcheck`.
@@ -65,7 +65,7 @@ Test-`curl` und Fehlercodes: `telegram-worker/README.md`.
 
 ## Weitere Dateien
 
-- **CSS-Kopien synchron halten:** Das `<style>` von `index.html` existiert zusätzlich als `site.css` (eingebunden von `impressum.html`, `datenschutz.html`, `agb.html`) und als Inline-`<style>` in `danke.html`. Jede CSS-Änderung an der Startseite in beide Kopien übernehmen.
+- **Gemeinsames Design:** Alle fünf aktiven HTML-Seiten binden `site.css` ein. Keine CSS-Kopien in den HTML-Seiten anlegen. Die Referenz und übernommene Layoutwerte stehen in `docs/design-refresh.md`.
 - `danke.html` – Danke-Seite nach dem Formular, `noindex`, nur Klassen der Startseite; Datenschutz-Umschalter und -Dialog per kleinem Inline-Script. Links auf `/` bzw. `/#anker`.
 - `impressum.html`, `datenschutz.html`, `agb.html` – Rechtsseiten, im Footer aller Seiten verlinkt. Der kurze `#privacy-dialog` in `index.html`/`danke.html` (Link an der Einwilligungs-Checkbox) nennt ebenfalls die eingesetzten Dienste – bei neuen Diensten/Trackern Dialog und `datenschutz.html` gemeinsam anpassen.
 - `assets/legacy/` (`style.css`, `script.js`) – Reste des alten „Zyntrix v3“-Designs; die zugehörigen Seiten `leistungen.html`, `team.html`, `use-cases.html` sind entfernt, nichts bindet die Dateien mehr ein.

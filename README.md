@@ -7,28 +7,16 @@ Rein statisch: kein Build, keine Abhängigkeiten. Push auf `main` = Deployment.
 
 ```
 zyntrix-co/
-├── index.html              Startseite (Nils-Landingpage, eine HTML-Datei)
-├── landing2.html           Weiterleitung auf / (alte Anzeigen-Links)
+├── index.html              Startseite mit Branchenvarianten und Potenzialcheck
 ├── danke.html              Danke-Seite nach Formularversand
-├── leistungen.html         ┐
-├── team.html               ├ Legacy-Seiten („Zyntrix v3“-Design)
-├── use-cases.html          ┘
-│
-├── favicon.ico             ┐
-├── apple-touch-icon.png    ├ Müssen im Root liegen (Browser/iOS rufen sie dort direkt ab)
-├── site.webmanifest        │
-├── CNAME                   ┘ Domain-Konfiguration für GitHub Pages
-│
-├── assets/
-│   ├── icons/              Favicons in allen Größen
-│   ├── landing2/           Fonts, Bilder, Logos der Startseite
-│   ├── img/                Logo, Nils-Avatar
-│   │   └── kunden/         Kundenlogos (aktuell nicht eingebunden)
-│   └── legacy/             style.css + script.js der Legacy-Seiten
-│
-├── docs/                   Anleitungen & Dokumente (PDF)
-├── archiv/                 Alte Versionen, nicht verlinkt
-└── telegram-worker/        Cloudflare Worker: Leads → Telegram-Gruppe
+├── impressum.html          Anbieterinformationen
+├── datenschutz.html        Datenschutzhinweise
+├── agb.html                Allgemeine Geschäftsbedingungen
+├── site.css                Gemeinsames Design aller fünf Seiten
+├── assets/                 Lokale Fonts, Bilder, Logos und Favicons
+├── docs/                   Design-Abgleich und technische Dokumentation
+├── archiv/                 Alte, nicht verlinkte Versionen
+└── telegram-worker/        Cloudflare Worker für interne Lead-Benachrichtigungen
 ```
 
 > Hinweis: Alles im Repo ist öffentlich unter `zyntrix.co/<pfad>` abrufbar – keine vertraulichen Dokumente ablegen.
@@ -46,3 +34,5 @@ Dann http://localhost:8000 öffnen (root-relative Pfade wie `/favicon.ico` funkt
 - Technische Details zu `index.html` und dem Formular-Flow: [CLAUDE.md](CLAUDE.md)
 - Telegram-Worker einrichten & deployen: [telegram-worker/README.md](telegram-worker/README.md)
 - Schritt-für-Schritt-Anleitung als PDF: [docs/Cloudflare-Worker-Einrichtung.pdf](docs/Cloudflare-Worker-Einrichtung.pdf)
+
+- Design-Referenz und übernommene CSS-Werte: [docs/design-refresh.md](docs/design-refresh.md)
