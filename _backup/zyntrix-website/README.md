@@ -1,2 +1,0 @@
-# zyntrix-website
-Zyntrix Website

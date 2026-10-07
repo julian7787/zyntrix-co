@@ -1,6 +1,6 @@
 # Telegram-Lead-Relay
 
-> Anleitung als PDF: [docs/Cloudflare-Worker-Einrichtung.pdf](../docs/Cloudflare-Worker-Einrichtung.pdf)
+> Anleitung als PDF: `2026-09-07_Zyntrix_Cloudflare_Worker_Einrichtung.pdf` im Nachbarordner `zyntrix-co archiv/docs/` (außerhalb des Repos).
 
 Postet jede Anfrage aus dem Kontaktformular von zyntrix.co zusätzlich zur
 E-Mail (Web3Forms) in eine Telegram-Gruppe.

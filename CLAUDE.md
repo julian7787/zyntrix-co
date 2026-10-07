@@ -18,24 +18,24 @@ Im Claude-Desktop-Browser: `preview_start` mit `site` (`.claude/launch.json`, Po
 
 **Die Startseite `index.html` ist die Corporate Identity von Zyntrix.** Jede neue oder überarbeitete Seite, jedes Dokument (PDF, DOCX, PPTX, E-Mail-Vorlage, Grafik …) und jede sonstige Ausgabe übernimmt exakt ihre Elemente, Farben und Schriften. Das gilt immer, auch wenn es in der Anfrage nicht eigens erwähnt wird.
 
-- **Nur bestehende CSS-Klassen der Startseite verwenden.** Keine neuen Klassen, keine eigenen Komponenten, keine Inline-Styles als Ersatz. Markup und Klassen aus `index.html` übernehmen (z. B. `wrap`, `section`, `section-top`, `eyebrow`, `button`, `text-link`, `card`, `step-card`, `value-card`, `grid2`, `grid3`, `faq-list`, `check-card`, `field`, `fields`, `form-button`, `footer`, `site-header`, `brand`). Das CSS kommt 1:1 aus dem `<style>` von `index.html` (Unterseiten binden dafür `site.css` ein). Fehlt ein Element: nicht erfinden, sondern beim User nachfragen.
+- **Nur bestehende CSS-Klassen der Startseite verwenden.** Keine neuen Klassen, keine eigenen Komponenten, keine Inline-Styles als Ersatz. Markup und Klassen aus `index.html` übernehmen (z. B. `wrap`, `section`, `section-top`, `eyebrow`, `button`, `text-link`, `card`, `step-card`, `value-card`, `grid2`, `grid3`, `faq-list`, `check-card`, `field`, `fields`, `form-button`, `footer`, `site-header`, `brand`). Das CSS kommt 1:1 aus dem `<style>` von `index.html` (Unterseiten binden dafür `assets/css/site.css` ein). Fehlt ein Element: nicht erfinden, sondern beim User nachfragen.
 - **Farben – ausschließlich diese** (`:root` in `index.html`):
   - `--ink` `#20434F` (Primär, Text, dunkle Flächen) · `--lime` `#D2E245` (Akzent, Buttons)
   - `--muted` `#556E77` (Fließtext sekundär) · `--line` `#E2E7E8` (Linien, Rahmen) · `--paper`/`--white` `#FFFFFF`
   - Flächen: `#F2F4F4` (Panels, Tags) · `#F9FBEE` (Hover) · `#2A5361` (Fläche auf Dunkel)
   - Nur im jeweiligen Kontext: `#C0474B` Fehler · `#B0791A` Hinweis · `#1F7A5A` Status · `#D9FDD3` WhatsApp-Bubble
-- **Schriften:** Space Grotesk (`assets/landing2/space-grotesk.woff2`) für Überschriften, Buttons, Marke; Inter (`assets/landing2/inter.woff2`) für Text. Keine Google-Fonts-Einbindung, keine weiteren Schriften. Radius `--radius` 10px; Abschnittsabstände 64–112px wie in der Referenz-Startseite.
-- **Bildsprache/Marke:** Nils-Avatar `assets/landing2/nils.webp`, Kundenlogos aus `assets/landing2/`, Tonalität wie auf der Startseite (Kunden werden gesiezt).
-- Abweichende Seiten sind Altlasten, keine Vorlage: `archiv/`, `assets/legacy/`.
+- **Schriften:** Space Grotesk (`assets/fonts/space-grotesk.woff2`) für Überschriften, Buttons, Marke; Inter (`assets/fonts/inter.woff2`) für Text. Keine Google-Fonts-Einbindung, keine weiteren Schriften. Radius `--radius` 10px; Abschnittsabstände 64–112px wie in der Referenz-Startseite.
+- **Bildsprache/Marke:** Nils-Avatar `assets/img/nils.webp`, Kundenlogos aus `assets/referenzen/`, Tonalität wie auf der Startseite (Kunden werden gesiezt).
+- Altlasten (alte Startseiten, Legacy-Design) liegen außerhalb des Repos in `../zyntrix-co archiv/` und sind keine Vorlage.
 
 ## `index.html` – Startseite (ehem. „Landingpage 2“)
 
-Normales, handgeschriebenes HTML (~70 KB, eine Datei): gemeinsames CSS in `site.css`, Logik in einem Inline-`<script>` am Ende (Vanilla JS, `$()` = `getElementById`). Viele Regeln stehen minifiziert in einer Zeile – Änderungen per exaktem String-Replace. Assets (Fonts, Nils-Avatar, Kundenlogos, OG-Bild) unter `assets/landing2/`, relativ referenziert. Sonstiges: `docs/landing2-umsetzung.md`.
+Normales, handgeschriebenes HTML (~70 KB, eine Datei): gemeinsames CSS in `assets/css/site.css`, Logik in einem Inline-`<script>` am Ende (Vanilla JS, `$()` = `getElementById`). Viele Regeln stehen minifiziert in einer Zeile – Änderungen per exaktem String-Replace. Assets unter `assets/` (`fonts/`, `img/`, `logo/`, `referenzen/`, `team/`, `video/`), relativ referenziert.
 
 - Branchen-Varianten per URL: `?b=handwerk` (Standard), `gastro`, `immo`, `hausverwaltung`, `kanzlei` (`BRANCHES` im Script).
 - Anker: `#inhalt`, `#so-funktionierts`, `#beispiele`, `#rechner`, `#datenschutz`, `#referenzen`, `#faq`, `#potenzialcheck`.
 - Potenzialcheck: 4 Klick-Schritte (`#quiz`), dann Kontaktformular (`#form-panel`), Bestätigung (`#thank-you`). Alle drei liegen im selben Grid-Feld der `.check-card` → die Kartenhöhe ist über alle Schritte gleich; Fehlertexte haben reservierten Platz. Layoutänderungen am Formular deshalb auch in den Quiz-Schritten (Mobile!) prüfen.
-- Vorherige gebündelte Startseite (Claude-Design-/`x-dc`-Export): `archiv/index_bundle_20260915.html`.
+- Vorherige gebündelte Startseite (Claude-Design-/`x-dc`-Export): `../zyntrix-co archiv/archiv/index_bundle_20260915.html`.
 
 ## Kontaktformular-Flow (übergreifend)
 
@@ -65,13 +65,15 @@ Test-`curl` und Fehlercodes: `telegram-worker/README.md`.
 
 ## Weitere Dateien
 
-- **Gemeinsames Design:** Alle fünf aktiven HTML-Seiten binden `site.css` ein. Keine CSS-Kopien in den HTML-Seiten anlegen. Die Referenz und übernommene Layoutwerte stehen in `docs/design-refresh.md`.
+- **Gemeinsames Design:** Alle fünf aktiven HTML-Seiten binden `assets/css/site.css` ein. Keine CSS-Kopien in den HTML-Seiten anlegen.
+- **Footer:** auf allen fünf Seiten identisch (`.footer` in `site.css`); Unterseiten verlinken `/#anker`, Rechtsseiten setzen `aria-current="page"`. Die große Wortmarke füllt über `21.23cqw` exakt die Inhaltsbreite (Breite 4,71 em – bei Änderung von Schrift oder `letter-spacing` der `.brand` neu berechnen). Die Wortmarke ist bewusst kein Link (Tippen soll nicht scrollen): Hover färbt Buchstaben lime, auf Touch-Geräten übernimmt das ein Snippet (Zustandsklasse `is-active`). Dieses und das Uhrzeit-Snippet (`#footer-clock`, Ortszeit Wien, Rückfall „24/7“) stehen am Script-Ende jeder Seite – Markup und Snippets immer in allen fünf Seiten nachziehen.
 - `danke.html` – Danke-Seite nach dem Formular, `noindex`, nur Klassen der Startseite; Datenschutz-Umschalter und -Dialog per kleinem Inline-Script. Links auf `/` bzw. `/#anker`.
 - `impressum.html`, `datenschutz.html`, `agb.html` – Rechtsseiten, im Footer aller Seiten verlinkt. Der kurze `#privacy-dialog` in `index.html`/`danke.html` (Link an der Einwilligungs-Checkbox) nennt ebenfalls die eingesetzten Dienste – bei neuen Diensten/Trackern Dialog und `datenschutz.html` gemeinsam anpassen.
-- `assets/legacy/` (`style.css`, `script.js`) – Reste des alten „Zyntrix v3“-Designs; die zugehörigen Seiten `leistungen.html`, `team.html`, `use-cases.html` sind entfernt, nichts bindet die Dateien mehr ein.
-- `archiv/` – alte Startseiten (`index_bundle_20260915.html` = bisheriges Bundle, `index_backup_20260810_173150.html` = unbündelt), nicht live verlinkt, aber öffentlich erreichbar.
-- `assets/icons/` – Favicon-PNGs (referenziert in allen Seiten und in `site.webmanifest`). `favicon.ico`, `apple-touch-icon.png`, `site.webmanifest`, `CNAME` bleiben bewusst im Root.
-- `assets/img/` – `logo.jpg` (nur Legacy, derzeit nirgends eingebunden), `nils-avatar.png` (derzeit nirgends eingebunden); `assets/img/kunden/` – Kundenlogos, derzeit nirgends eingebunden (`index.html` nutzt `assets/landing2/`).
-- `docs/` – Dokumente/Anleitungen (z. B. Cloudflare-Worker-PDF). Achtung: alles im Repo ist öffentlich unter `zyntrix.co/…` erreichbar.
+- **Archiv außerhalb des Repos:** `../zyntrix-co archiv/` enthält `archiv/` (alte Startseiten), `_backup/` (altes Repo `zyntrix-website` inkl. Git-Bundle), `docs/` (PDFs, `design-refresh.md`, `landing2-umsetzung.md`) und `team-platzhalter/`. Im Repo bleibt nur, was die Website bzw. der Worker braucht – Nicht-Benötigtes dorthin verschieben, nicht ins Repo legen.
+- `.vercelignore` – nimmt `telegram-worker/`, `.claude/`, `CLAUDE.md`, `.github/` vom Deployment aus. Das GitHub-Repo ist öffentlich, dort bleibt alles sichtbar.
+- `assets/icons/` – Favicon-PNGs und `site.webmanifest` (in allen Seiten root-relativ referenziert). `favicon.ico` und `apple-touch-icon.png` bleiben bewusst im Root, weil Browser und Crawler sie dort fest erwarten.
+- Favicons (Logo `assets/logo/zyntrix-logo-transparent-1600.png` auf Weiß, Rand oben/unten 102 px von 512, inkl. `assets/icons/favicon.svg`) und Sharecard `assets/img/og-image.jpg` (Logo + Wortmarke in `--ink` auf Weiß, Verhältnisse wie `.brand`) werden mit `../zyntrix-co archiv/tools/` erzeugt (`favicon/build.py`, `sharecard/build.sh`, siehe README dort). Nicht von Hand bearbeiten; danach `?v=…` an den Icon-Links aller Seiten hochzählen.
+- Im Root liegen nur die fünf HTML-Seiten, `CLAUDE.md`, `favicon.ico`, `apple-touch-icon.png`, `CNAME`, `.gitignore`, `.vercelignore`; alles andere in Unterordnern (`assets/`, `telegram-worker/`, `.github/README.md`).
+- `assets/` – `fonts/` (Inter, Space Grotesk), `img/` (Nils-Avatar `nils.webp`, OG-Bild `og-image.jpg`), `referenzen/` (Kundenlogos), `logo/` (eigenes Zyntrix-Logo), `team/` (Teamfotos), `icons/` (Favicons), `video/` (Erklärvideo). Achtung: alles im Repo außer den Einträgen in `.vercelignore` ist öffentlich unter `zyntrix.co/…` erreichbar.
 - HTML-Seiten bleiben im Root, damit ihre öffentlichen URLs stabil bleiben.
 - Tracking in jeder Seite im `<head>` – bei neuen Seiten beides übernehmen: Google Analytics (gtag, `G-1M1GFKZNW0`, ganz oben) und Meta Pixel (ID `1392514952248366`).

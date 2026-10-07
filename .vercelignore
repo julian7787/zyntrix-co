@@ -1,2 +1,5 @@
-# Backup des alten Repos, nur im Git-Repo, nicht deployen
-_backup/
+# Nur im Git-Repo, nicht deployen (auf der Website nicht abrufbar)
+telegram-worker/
+.claude/
+.github/
+CLAUDE.md
